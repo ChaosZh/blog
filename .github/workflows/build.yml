@@ -19,7 +19,7 @@ jobs:
     - name: Restore blog cache
       uses: actions/cache/restore@v3
       with:
-        path: ${{ GITHUB_WORKSPACE }}/api/cache
+        path: api/cache
         key: blog-cache
 
     - name: Install dependencies
@@ -34,11 +34,11 @@ jobs:
     - name: Save blog cache
       uses: actions/cache/save@v3
       with:
-        path: ${{ GITHUB_WORKSPACE }}/api/cache
+        path: api/cache
         key: blog-cache
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: blog
-        path: ${{ GITHUB_WORKSPACE }}/api/cache
+        path: api/cache
