@@ -1,8 +1,8 @@
 ---
 import { SITE } from "@config";
 import "@styles/base.css";
-import Config from '../../astro.config.mjs'
 
+const base = import.meta.env.BASE_URL;
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export interface Props {
@@ -32,7 +32,7 @@ const socialImageURL = new URL(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href=`${base}/favicon.svg` />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
@@ -41,7 +41,7 @@ const socialImageURL = new URL(
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href=`${base}/sitemap-index.xml` />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={title} />
@@ -65,7 +65,7 @@ const socialImageURL = new URL(
     />
 
     <!-- Base Url -->
-    <base href={Config.base} />
+    <base href={base} />
 
     {
       // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
