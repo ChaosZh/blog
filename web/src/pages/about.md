@@ -10,7 +10,7 @@ This blog is my space for sharing insights into computer science technologies, m
 I'm also deeply passionate about contributing to open source projects. Feel free to reach out if you have any great ideas for new projects. Let's work and make a difference together! 💡🌟
 
 <div>
-  <img src="/base/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+  <img src="assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
 </div>
 
 ## Tech Stack
