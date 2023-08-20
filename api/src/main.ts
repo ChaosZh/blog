@@ -5,8 +5,11 @@ const { NotionToMarkdown } = require("notion-to-md");
 import * as fs from 'fs';
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN })
-const n2m = new NotionToMarkdown({ notionClient: notion });
 const databaseId = process.env.NOTION_DATABASE_ID
+const n2m = new NotionToMarkdown({ notionClient: notion });
+n2m.setCustomTransformer("table_of_contents", async (_: any) => {
+  return "## Table of contents";
+});
 
 async function FetchPages(): Promise<Page[]> {
   let raw_notion_db = await notion.databases.query({
@@ -22,8 +25,9 @@ async function FetchPages(): Promise<Page[]> {
     let category = (item.properties as any)?.Category?.select?.name as string;
     let title = (item.properties as any)?.Notebook?.title?.[0]?.plain_text as string;
     let status = (item.properties as any)?.Status?.select?.name as string;
+    let description = (item.properties as any)?.Description?.rich_text?.[0]?.plain_text as string;
 
-    return new Page(id, title, category, createdTime, lastEditTime, status)
+    return new Page(id, title, category, createdTime, lastEditTime, status, description)
   });
 
   return pages;
@@ -39,6 +43,7 @@ async function PersistPages(pages: Page[]) {
     {
       if (!pages.find(_ => _.Id == existing))
       {
+        console.log(`[${existing}] Remove cached page since it doesn't exist anymore.`)
         fs.rmSync(existing, { recursive: true, force: true });
       }
     }
@@ -81,7 +86,8 @@ async function PersistSinglePage(page: Page): Promise<void>{
     // update content.md
     let mdblocks = await n2m.pageToMarkdown(page.Id);
     let mdString = n2m.toMarkdownString(mdblocks);
-    fs.writeFileSync(`${cacheDir}/${page.getMarkdownFilePath()}`, mdString.parent);
+    let content = [page.getAstroHeader(), mdString.parent].join('\n');
+    fs.writeFileSync(`${cacheDir}/${page.getMarkdownFilePath()}`, content);
 
     console.log(`[${page.Id}] Finish persisting page.`);
   } catch (err) {
