@@ -59,9 +59,6 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            a: {
-              textDecoration: 'none',
-            },
             h1: {
               fontWeight: "600",
               fontSize: "1.75em",

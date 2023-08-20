@@ -1,15 +1,9 @@
 import { Page } from "./model"
-import { Client } from "@notionhq/client"
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
-const { NotionToMarkdown } = require("notion-to-md");
 import * as fs from 'fs';
+import { notion, n2m } from "./notion";
 
-const notion = new Client({ auth: process.env.NOTION_TOKEN })
 const databaseId = process.env.NOTION_DATABASE_ID
-const n2m = new NotionToMarkdown({ notionClient: notion });
-n2m.setCustomTransformer("table_of_contents", async (_: any) => {
-  return "## Table of contents";
-});
 
 async function FetchPages(): Promise<Page[]> {
   let raw_notion_db = await notion.databases.query({
