@@ -11,34 +11,34 @@ n2m.setCustomTransformer("table_of_contents", async (_: any) => {
 });
 
 // replace with long-lived url
-n2m.setCustomTransformer("image", async (block: any) => {
-  let blockContent = block.image;
+//n2m.setCustomTransformer("image", async (block: any) => {
+//  let blockContent = block.image;
   
-  const image_type = blockContent.type;
-  let link = "";
-  if (image_type === "external") {
-    link = blockContent.external.url;
-  }
-  if (image_type === "file") {
-    link = blockContent.file.url;
-  }
+//  const image_type = blockContent.type;
+//  let link = "";
+//  if (image_type === "external") {
+//    link = blockContent.external.url;
+//  }
+//  if (image_type === "file") {
+//    link = blockContent.file.url;
+//  }
 
-  if (link.startsWith("https://s3")) {
-    link = link.replace("X-Amz-Expires=3600", "X-Amz-Expires=604800");
-  } else if (link.startsWith("/image")) {
-    link = `${NOTION_BASE_URL}${link}`
-  }
+//  if (link.startsWith("https://s3")) {
+//    link = link.replace("X-Amz-Expires=3600", "X-Amz-Expires=604800");
+//  } else if (link.startsWith("/image")) {
+//    link = `${NOTION_BASE_URL}${link}`
+//  }
 
-  if (blockContent?.external?.url)
-  {
-    blockContent.external.url = link;
-  }
-  if (blockContent?.file?.url)
-  {
-    blockContent.file.url = link;
-  }
-  return false;
-});
+//  if (blockContent?.external?.url)
+//  {
+//    blockContent.external.url = link;
+//  }
+//  if (blockContent?.file?.url)
+//  {
+//    blockContent.file.url = link;
+//  }
+//  return false;
+//});
 
 export {
   notion,
