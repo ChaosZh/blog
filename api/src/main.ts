@@ -1,7 +1,7 @@
 import { Page } from "./model"
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 import * as fs from 'fs';
-import { notion, n2m } from "./notion";
+import { notion, n2m, copyToBlobTasks } from "./notion";
 
 const databaseId = process.env.NOTION_DATABASE_ID
 
@@ -44,11 +44,12 @@ async function PersistPages(pages: Page[]) {
   }
 
   // update cached pages according to last_edit_time
-  let tasks: Promise<void>[] = [];
+  let tasks: Promise<any>[] = [];
   for (let page of pages)
   {
     tasks.push(PersistSinglePage(page));
   }
+  tasks.push(...copyToBlobTasks);
   for (let task of tasks)
   {
     await task;
