@@ -13,7 +13,7 @@
     "format": "prettier --plugin-search-dir=. --write .",
     "cz": "cz",
     "lint": "eslint .",
-    "blog": "rm -rf src/content/blog/* && find ../api/cache -type f -name \"*.md\" -exec cp {} src/content/blog \\;"
+    "blog": "rm -rf src/content/blog && mkdir -p src/content/blog && find ../api/cache -type f -name \"*.md\" -exec cp {} src/content/blog \\;"
   },
   "dependencies": {
     "@astrojs/rss": "^2.4.1",
