@@ -9,9 +9,6 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://chaoszh.github.io/", // replace this with your deployed domain
   base: "/blog",
-  redirects: {
-    "/": "/blog",
-  },
   integrations: [
     tailwind({
       config: {
