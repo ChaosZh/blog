@@ -7,7 +7,8 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-paper.pages.dev/", // replace this with your deployed domain
+  site: "https://chaoszh.github.io/", // replace this with your deployed domain
+  base: "/blog",
   integrations: [
     tailwind({
       config: {
@@ -19,7 +20,12 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [
-      remarkToc,
+      [
+        remarkToc,
+        {
+          tight: true
+        }
+      ],
       [
         remarkCollapse,
         {

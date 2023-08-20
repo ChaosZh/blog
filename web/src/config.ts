@@ -4,10 +4,10 @@ export const SITE: Site = {
   website: "https://chaoszh.github.io/",
   author: "Chao Zheng",
   desc: "Blog of Chao Zheng.",
-  title: "Chaoszh's Blog",
+  title: "😎",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
-  postPerPage: 10,
+  postPerPage: 20,
 };
 
 export const LOCALE = ["en-EN"]; // set to [] to use the environment default

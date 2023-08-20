@@ -4,6 +4,8 @@ import Card from "@components/Card";
 import slugify from "@utils/slugify";
 import type { BlogFrontmatter } from "@content/_schemas";
 
+const base = import.meta.env.BASE_URL;
+
 export type SearchItem = {
   title: string;
   description: string;
@@ -111,7 +113,7 @@ export default function SearchBar({ searchList }: Props) {
         {searchResults &&
           searchResults.map(({ item, refIndex }) => (
             <Card
-              href={`/posts/${slugify(item.data)}`}
+              href={`${base}posts/${slugify(item.data)}`}
               frontmatter={item.data}
               key={`${refIndex}-${slugify(item.data)}`}
             />

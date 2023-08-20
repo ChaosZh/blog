@@ -12,9 +12,8 @@
     "format:check": "prettier --plugin-search-dir=. --check .",
     "format": "prettier --plugin-search-dir=. --write .",
     "cz": "cz",
-    "prepare": "husky install",
     "lint": "eslint .",
-    "blog": "rm -rf src/content/blog/* && find ../api/cache -type f -name \"*.md\" -exec cp {} src/content/blog \\;"
+    "blog": "rm -rf src/content/blog && mkdir -p src/content/blog && find ../api/cache -type f -name \"*.md\" -exec cp {} src/content/blog \\;"
   },
   "dependencies": {
     "@astrojs/rss": "^2.4.1",
@@ -41,7 +40,6 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.40.0",
     "eslint-plugin-astro": "^0.27.0",
-    "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.8",
