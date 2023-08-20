@@ -5,7 +5,7 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
 
-const base = import.meta.env.BASE_URL == "/";
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title={`404 Not Found | ${SITE.title}`}>
@@ -17,7 +17,7 @@ const base = import.meta.env.BASE_URL == "/";
       <span aria-hidden="true">¯\_(ツ)_/¯</span>
       <p>Page Not Found</p>
       <LinkButton
-        href=`${base}`
+        href={`${base}`}
         className="my-6 underline decoration-dashed underline-offset-8 text-lg"
       >
         Go back home
@@ -30,7 +30,7 @@ const base = import.meta.env.BASE_URL == "/";
 
 <style>
   #main-content {
-    @apply mx-auto flex max-w-3xl flex-1 items-center justify-center;
+    @apply mx-auto flex max-w-6xl flex-1 items-center justify-center;
   }
   .not-found-wrapper {
     @apply mb-14 flex flex-col items-center justify-center;

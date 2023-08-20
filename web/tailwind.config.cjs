@@ -16,11 +16,6 @@ module.exports = {
     screens: {
       sm: "640px",
     },
-
-    // Uncomment the following extend
-    // if existing Tailwind color palette will be used
-
-    // extend: {
     textColor: {
       skin: {
         base: withOpacity("--color-text-base"),
@@ -58,8 +53,37 @@ module.exports = {
     },
     fontFamily: {
       mono: ["IBM Plex Mono", "monospace"],
+      sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
     },
-    // },
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              textDecoration: 'none',
+            },
+            h1: {
+              fontWeight: "700",
+              fontSize: "1.75em",
+            },
+            ol: {
+              paddingLeft: "0.5em",
+              listStylePosition: "inside",
+            },
+            ul: {
+              paddingLeft: "0.5em",
+              listStylePosition: "inside",
+            },
+            'ol > li': {
+              paddingLeft: 0,
+            },
+            'ul > li': {
+              paddingLeft: 0,
+            }
+          }
+        }
+      }
+    }
   },
   plugins: [require("@tailwindcss/typography")],
 };
