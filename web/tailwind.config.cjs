@@ -63,8 +63,11 @@ module.exports = {
               textDecoration: 'none',
             },
             h1: {
-              fontWeight: "700",
+              fontWeight: "600",
               fontSize: "1.75em",
+            },
+            h2: {
+              fontWeight: "600",
             },
             ol: {
               paddingLeft: "0.5em",
