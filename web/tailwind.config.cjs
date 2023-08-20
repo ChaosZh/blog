@@ -62,16 +62,17 @@ module.exports = {
             h1: {
               fontWeight: "600",
               fontSize: "1.75em",
+              marginTop: "1em",
             },
             h2: {
               fontWeight: "600",
             },
             ol: {
-              paddingLeft: "0.5em",
+              paddingLeft: "1em",
               listStylePosition: "inside",
             },
             ul: {
-              paddingLeft: "0.5em",
+              paddingLeft: "1em",
               listStylePosition: "inside",
             },
             'ol > li': {
@@ -79,6 +80,9 @@ module.exports = {
             },
             'ul > li': {
               paddingLeft: 0,
+            },
+            'li > p': {
+              display: 'inline'
             }
           }
         }
