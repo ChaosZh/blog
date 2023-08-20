@@ -44,10 +44,14 @@ jobs:
         name: blog
         path: api/cache
 
-  post:
-    name: Post blogs
+  deploy:
+    name: Deploy blogs
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
