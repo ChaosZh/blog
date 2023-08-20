@@ -12,7 +12,6 @@
     "format:check": "prettier --plugin-search-dir=. --check .",
     "format": "prettier --plugin-search-dir=. --write .",
     "cz": "cz",
-    "prepare": "husky install",
     "lint": "eslint .",
     "blog": "rm -rf src/content/blog/* && find ../api/cache -type f -name \"*.md\" -exec cp {} src/content/blog \\;"
   },
