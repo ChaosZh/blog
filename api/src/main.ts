@@ -20,6 +20,7 @@ async function FetchPages(): Promise<Page[]> {
     let title = (item.properties as any)?.Notebook?.title?.[0]?.plain_text as string;
     let status = (item.properties as any)?.Status?.select?.name as string;
     let description = (item.properties as any)?.Description?.rich_text?.[0]?.plain_text as string;
+    description = description ?? "Uh-oh, it looks like this post doesn't have an introduction yet."
 
     return new Page(id, title, category, createdTime, lastEditTime, status, description)
   });
